@@ -8,15 +8,15 @@ import morgan from 'morgan';
 import authRoutes from './routes/auth.js';
 import { Configuration, OpenAIApi } from 'openai';
 
+dotenv.config();
 const configuration = new Configuration({
   organization: 'org-sGo3G6a7IOLpPRqXG5JI97BQ',
-  apiKey: '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',
+  apiKey: process.env.KEY,
 });
 const openai = new OpenAIApi(configuration);
 
 /* CONFIGURATIONS */
 const app = express();
-dotenv.config();
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
