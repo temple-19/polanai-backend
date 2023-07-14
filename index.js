@@ -26,6 +26,9 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 
 // Set up CORS headers
 app.use(cors());
+app.use(cors({
+  origin: 'https://gleeful-tulumba-524329.netlify.app',
+}));
 
 /* ROUTES */
 app.use('/auth', authRoutes);
