@@ -31,6 +31,8 @@ app.use(cors());
 app.use('/auth', authRoutes);
 
 app.post('/create', async (req, res) => {
+   res.header('Access-Control-Allow-Origin', 'https://gleeful-tulumba-524329.netlify.app');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   const { message } = req.body;
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
