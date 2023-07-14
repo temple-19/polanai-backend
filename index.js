@@ -31,7 +31,7 @@ app.use(cors());
 app.use('/auth', authRoutes);
 
 app.post('/create', async (req, res) => {
- const { message } = req.body;
+  const { message } = req.body;
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: `write a short tv add script with these suggestions:${message}, make sure its concluded within 306 letters and if there are characters names in the suggestion make sure they have a fun, concise script dialog.`,
@@ -40,12 +40,13 @@ app.post('/create', async (req, res) => {
   });
   console.log(response.data);
   if (response.data.choices[0].text) {
-   res.header('Access-Control-Allow-Origin', 'https://gleeful-tulumba-524329.netlify.app');
+    res.setHeader('Access-Control-Allow-Origin', 'https://gleeful-tulumba-524329.netlify.app');
     res.json({
       message: response.data.choices[0].text,
     });
   }
 });
+
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
