@@ -24,12 +24,12 @@ app.use(morgan('common'));
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 
-app.use(cors({
-  origin: 'https://gleeful-tulumba-524329.netlify.app',
-}));
+// Set up CORS headers
+app.use(cors());
 
 /* ROUTES */
 app.use('/auth', authRoutes);
+
 app.post('/create', async (req, res) => {
   const { message } = req.body;
   const response = await openai.createCompletion({
@@ -40,6 +40,7 @@ app.post('/create', async (req, res) => {
   });
   console.log(response.data);
   if (response.data.choices[0].text) {
+    res.header('Access-Control-Allow-Origin', '*');
     res.json({
       message: response.data.choices[0].text,
     });
