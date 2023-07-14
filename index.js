@@ -10,7 +10,7 @@ import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new Configuration({
   organization: 'org-sGo3G6a7IOLpPRqXG5JI97BQ',
-  apiKey: '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',
+  apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -19,6 +19,7 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 app.use(morgan('common'));
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
