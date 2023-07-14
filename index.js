@@ -9,8 +9,8 @@ import authRoutes from './routes/auth.js';
 import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new Configuration({
-  organization: 'org-sGo3G6a7IOLpPRqXG5JI97BQ',
-  apiKey: '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',
+  organization: process.env.ORG,
+  apiKey: process.env.API,
 });
 const openai = new OpenAIApi(configuration);
 
