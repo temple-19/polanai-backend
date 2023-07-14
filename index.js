@@ -30,7 +30,7 @@ app.use(cors());
 /* ROUTES */
 app.use('/auth', authRoutes);
 
-app.post('/create', async (req, res) => {
+app.post('/', async (req, res) => {
   const { message } = req.body;
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
