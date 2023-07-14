@@ -9,7 +9,7 @@ import authRoutes from './routes/auth.js';
 import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new Configuration({
-  organization:'org-sGo3G6a7IOLpPRqXG5JI97BQ',
+  organization: 'org-sGo3G6a7IOLpPRqXG5JI97BQ',
   apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
@@ -24,24 +24,10 @@ app.use(morgan('common'));
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 
-// Set up CORS headers
 app.use(cors());
-app.use(cors({
-  origin: 'https://gleeful-tulumba-524329.netlify.app',
-}));
-
-/* Add CORS headers */
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://gleeful-tulumba-524329.netlify.app');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
 
 /* ROUTES */
 app.use('/auth', authRoutes);
-
 app.post('/create', async (req, res) => {
   const { message } = req.body;
   const response = await openai.createCompletion({
