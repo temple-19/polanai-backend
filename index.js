@@ -40,7 +40,7 @@ app.post('/create', async (req, res) => {
   });
   console.log(response.data);
   if (response.data.choices[0].text) {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'https://gleeful-tulumba-524329.netlify.app');
     res.json({
       message: response.data.choices[0].text,
     });
