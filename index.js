@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
-import morgan from 'morgan';
 import authRoutes from './routes/auth.js';
 import { Configuration, OpenAIApi } from 'openai';
 
@@ -18,8 +17,6 @@ const openai = new OpenAIApi(configuration);
 const app = express();
 dotenv.config();
 app.use(express.json());
-app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 app.use(morgan('common'));
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
