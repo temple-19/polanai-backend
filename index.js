@@ -30,6 +30,15 @@ app.use(cors({
   origin: 'https://gleeful-tulumba-524329.netlify.app',
 }));
 
+/* Add CORS headers */
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://gleeful-tulumba-524329.netlify.app');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 /* ROUTES */
 app.use('/auth', authRoutes);
 
@@ -48,8 +57,6 @@ app.post('/create', async (req, res) => {
     });
   }
 });
-
-
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
