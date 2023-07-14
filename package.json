@@ -1,6 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "proxy": "https://polani-api.onrender.com",
   "description": "",
   "main": "index.js",
   "type": "module",
